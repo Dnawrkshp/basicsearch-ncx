@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2EBF424F-7409-498E-86E3-BE57574CA722}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BasicSearch</RootNamespace>
+    <AssemblyName>BasicSearch</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetCheatX.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetCheatX.Core.1.0.0-alpha\lib\net40\NetCheatX.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.2.10.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddOn\SearchUIAddOn.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultContainer.cs" />
+    <Compile Include="Search.cs" />
+    <Compile Include="SearchMethod\EqualTo.cs" />
+    <Compile Include="SearchMethod\GreaterThan.cs" />
+    <Compile Include="SearchMethod\GreaterThanOrEqualTo.cs" />
+    <Compile Include="SearchMethod\LessThan.cs" />
+    <Compile Include="SearchMethod\LessThanOrEqualTo.cs" />
+    <Compile Include="SearchMethod\NotEqualTo.cs" />
+    <Compile Include="SearchMethod\ValueBetween.cs" />
+    <Compile Include="SearchParamEditor\typeByte.cs" />
+    <Compile Include="SearchParamEditor\typeByteArray.cs" />
+    <Compile Include="SearchParamEditor\typeDouble.cs" />
+    <Compile Include="SearchParamEditor\typeFloat.cs" />
+    <Compile Include="SearchParamEditor\typeInt.cs" />
+    <Compile Include="SearchParamEditor\typeLong.cs" />
+    <Compile Include="SearchParamEditor\typeSByte.cs" />
+    <Compile Include="SearchParamEditor\typeSByteArray.cs" />
+    <Compile Include="SearchParamEditor\typeShort.cs" />
+    <Compile Include="SearchParamEditor\typeString.cs" />
+    <Compile Include="SearchParamEditor\typeUInt.cs" />
+    <Compile Include="SearchParamEditor\typeULong.cs" />
+    <Compile Include="SearchParamEditor\typeUShort.cs" />
+    <Compile Include="SearchParamEditor\UI\byteArrayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\byteArrayControl.designer.cs">
+      <DependentUpon>byteArrayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\byteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\byteControl.designer.cs">
+      <DependentUpon>byteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\doubleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\doubleControl.designer.cs">
+      <DependentUpon>doubleControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\floatControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\floatControl.designer.cs">
+      <DependentUpon>floatControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\intControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\intControl.designer.cs">
+      <DependentUpon>intControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\longControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\longControl.designer.cs">
+      <DependentUpon>longControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\MetroUpDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\MetroUpDown.designer.cs">
+      <DependentUpon>MetroUpDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\sbyteArrayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\sbyteArrayControl.designer.cs">
+      <DependentUpon>sbyteArrayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\sbyteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\sbyteControl.designer.cs">
+      <DependentUpon>sbyteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\shortControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\shortControl.designer.cs">
+      <DependentUpon>shortControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\stringControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\stringControl.designer.cs">
+      <DependentUpon>stringControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\uintControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\uintControl.designer.cs">
+      <DependentUpon>uintControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\ulongControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\ulongControl.designer.cs">
+      <DependentUpon>ulongControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\ushortControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SearchParamEditor\UI\ushortControl.designer.cs">
+      <DependentUpon>ushortControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchType\EightByte.cs" />
+    <Compile Include="SearchType\FloatingPoint.cs" />
+    <Compile Include="SearchType\FourByte.cs" />
+    <Compile Include="SearchType\OneByte.cs" />
+    <Compile Include="SearchType\Text.cs" />
+    <Compile Include="SearchType\TwoByte.cs" />
+    <Compile Include="SearchType\XByte.cs" />
+    <Compile Include="UI\SearchUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SearchUI.designer.cs">
+      <DependentUpon>SearchUI.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\byteArrayControl.resx">
+      <DependentUpon>byteArrayControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\byteControl.resx">
+      <DependentUpon>byteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\doubleControl.resx">
+      <DependentUpon>doubleControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\floatControl.resx">
+      <DependentUpon>floatControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\intControl.resx">
+      <DependentUpon>intControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\longControl.resx">
+      <DependentUpon>longControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\MetroUpDown.resx">
+      <DependentUpon>MetroUpDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\sbyteArrayControl.resx">
+      <DependentUpon>sbyteArrayControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\sbyteControl.resx">
+      <DependentUpon>sbyteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\shortControl.resx">
+      <DependentUpon>shortControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\stringControl.resx">
+      <DependentUpon>stringControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\uintControl.resx">
+      <DependentUpon>uintControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\ulongControl.resx">
+      <DependentUpon>ulongControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchParamEditor\UI\ushortControl.resx">
+      <DependentUpon>ushortControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SearchUI.resx">
+      <DependentUpon>SearchUI.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Decimal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hex.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(PlatformName) == x64 ( copy /Y "$(TargetPath)" "$(ProjectDir)$(TargetName).dll64*" )
+if $(PlatformName) == x86 ( copy /Y "$(TargetPath)" "$(ProjectDir)$(TargetName).dll32*" )</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
