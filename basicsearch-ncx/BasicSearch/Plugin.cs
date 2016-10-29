@@ -8,7 +8,7 @@ using NetCheatX.Core.Interfaces;
 
 namespace BasicSearch
 {
-    public class Plugin : IPluginBase
+    public class Plugin : IPluginMain
     {
         // Search methods
         SearchMethod.EqualTo _equalTo = new SearchMethod.EqualTo();
@@ -58,6 +58,7 @@ namespace BasicSearch
         public string Description { get; } = "Plugin containing basic search methods, data types, and data type editors for NetCheat X.";
         public string Name { get; } = "BasicSearch";
         public ObjectVersion Version { get { return _version; } }
+        public string[] SupportedPlatforms { get; } = null;
 
         public void Initialize(IPluginHost host)
         {
