@@ -49,7 +49,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>..\..\..\netcheat-x\NetCheatX\UI\bin\x86\Debug\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -78,8 +78,8 @@
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NetCheatX.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NetCheatX.Core.1.0.1-alpha\lib\net40\NetCheatX.Core.dll</HintPath>
+    <Reference Include="NetCheatX.Core, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetCheatX.Core.1.0.8-alpha\lib\net40\NetCheatX.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddOn\SearchUIAddOn.cs" />
+    <Compile Include="Extension.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -106,7 +107,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResultContainer.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="SearchMethod\EqualTo.cs" />
     <Compile Include="SearchMethod\GreaterThan.cs" />
@@ -219,12 +219,19 @@
     <Compile Include="SearchType\Text.cs" />
     <Compile Include="SearchType\TwoByte.cs" />
     <Compile Include="SearchType\XByte.cs" />
+    <Compile Include="UI\AddressListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\SearchProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\SearchUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\SearchUI.designer.cs">
       <DependentUpon>SearchUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Fonts\UbuntuMono.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -279,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\UbuntuMono-R.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Decimal.png" />
@@ -288,8 +296,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(PlatformName) == x64 ( copy /Y "$(TargetPath)" "$(ProjectDir)$(TargetName).dll64*" )
-if $(PlatformName) == x86 ( copy /Y "$(TargetPath)" "$(ProjectDir)$(TargetName).dll32*" )</PostBuildEvent>
+    <PostBuildEvent>if $(PlatformName) == x64 ( move /Y "$(TargetPath)" "$(TargetDir)$(TargetName).dll64" )
+if $(PlatformName) == x86 ( move /Y "$(TargetPath)" "$(TargetDir)$(TargetName).dll32" )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

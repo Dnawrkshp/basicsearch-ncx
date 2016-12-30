@@ -79,5 +79,15 @@ namespace BasicSearch.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] UbuntuMono_R {
+            get {
+                object obj = ResourceManager.GetObject("UbuntuMono_R", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

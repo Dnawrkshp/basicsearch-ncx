@@ -36,9 +36,10 @@
             this.numericUpDown1.DecimalPlaces = 0;
             this.numericUpDown1.Hexadecimal = true;
             this.numericUpDown1.HexButton = true;
+            this.numericUpDown1.IsSigned = false;
             this.numericUpDown1.Location = new System.Drawing.Point(0, 0);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            65535,
+            -1,
             0,
             0,
             0});

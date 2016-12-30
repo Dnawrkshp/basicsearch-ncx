@@ -35,10 +35,10 @@ namespace BasicSearch.SearchMethod
         public string[] SupportedPlatforms { get; } = null;
 
 
-        public void FirstScan(out List<ISearchResult> result, ISearchType searchType, object[] args, Types.MemoryRange[] range, Types.SetProgressCallback setProgress)
+        public void FirstScan(ref NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> result, ISearchType searchType, object[] args, Types.MemoryRange[] range, Types.SetProgressCallback setProgress)
         {
-            // Initialize list
-            result = new List<ISearchResult>();
+            if (result == null)
+                result = new NetCheatX.Core.Containers.SearchResultContainer<ISearchResult>();
             if (_host == null)
                 return;
 
@@ -49,13 +49,13 @@ namespace BasicSearch.SearchMethod
             // Loop through each range and scan
             foreach (Types.MemoryRange r in range)
             {
-                Search.FirstScan(_host, this, setProgress, r, ref result, Search.SearchType.ValueBetween, searchType.Signed, searchType.Alignment, param0, param1);
+                Search.FirstScan(_host, this, setProgress, r, result, Search.SearchType.ValueBetween, searchType.Signed, searchType.Alignment, param0, param1);
             }
         }
 
-        public void NextScan(ref List<ISearchResult> result, ISearchType searchType, object[] args, Types.SetProgressCallback setProgress)
+        public void NextScan(ref NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> result, ISearchType searchType, object[] args, Types.SetProgressCallback setProgress)
         {
-            if (_host == null)
+            if (_host == null || result == null || result.Count == 0)
                 return;
 
             // Grab parameters
@@ -63,7 +63,7 @@ namespace BasicSearch.SearchMethod
             byte[] param1 = (byte[])args[1];
 
             // Perform scan
-            Search.NextScan(_host, this, setProgress, ref result, Search.SearchType.ValueBetween, searchType.Signed, param0, param1);
+            Search.NextScan(_host, this, setProgress, result, Search.SearchType.ValueBetween, searchType.Signed, param0, param1);
         }
 
         public bool SupportSearchType(ISearchType sType)

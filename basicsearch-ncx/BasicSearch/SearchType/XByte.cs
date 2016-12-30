@@ -40,7 +40,7 @@ namespace BasicSearch.SearchType
             columnValues = new string[2];
 
             columnValues[0] = result.Address.ToString("X16");
-            columnValues[1] = _host.ActiveCommunicator.PlatformBitConverter.ToString(result.Value).Replace("-", "");
+            columnValues[1] = BitConverter.ToString(result.Value).Replace("-", "");
         }
 
         public void ResultToLegacyCode(out string code, ISearchResult result)
@@ -93,7 +93,7 @@ namespace BasicSearch.SearchType
             columnValues = new string[2];
 
             columnValues[0] = result.Address.ToString("X16");
-            columnValues[1] = _host.ActiveCommunicator.PlatformBitConverter.ToString(result.Value).Replace("-", "");
+            columnValues[1] = BitConverter.ToString(result.Value).Replace("-", "");
         }
 
         public void ResultToLegacyCode(out string code, ISearchResult result)

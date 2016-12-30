@@ -34,10 +34,11 @@ namespace BasicSearch.SearchMethod
         public string[] SupportedPlatforms { get; } = null;
 
 
-        public void FirstScan(out List<ISearchResult> result, ISearchType searchType, object[] args, Types.MemoryRange[] range, Types.SetProgressCallback setProgress)
+        public void FirstScan(ref NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> result, ISearchType searchType, object[] args, Types.MemoryRange[] range, Types.SetProgressCallback setProgress)
         {
-            // Initialize list
-            result = new List<ISearchResult>();
+            if (result == null)
+                result = new NetCheatX.Core.Containers.SearchResultContainer<ISearchResult>();
+
             if (_host == null)
                 return;
 
@@ -47,20 +48,20 @@ namespace BasicSearch.SearchMethod
             // Loop through each range and scan
             foreach (Types.MemoryRange r in range)
             {
-                Search.FirstScan(_host, this, setProgress, r, ref result, Search.SearchType.EqualTo, false, searchType.Alignment, param0);
+                Search.FirstScan(_host, this, setProgress, r, result, Search.SearchType.EqualTo, false, searchType.Alignment, param0);
             }
         }
 
-        public void NextScan(ref List<ISearchResult> result, ISearchType searchType, object[] args, Types.SetProgressCallback setProgress)
+        public void NextScan(ref NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> result, ISearchType searchType, object[] args, Types.SetProgressCallback setProgress)
         {
-            if (_host == null)
+            if (_host == null || result == null || result.Count == 0)
                 return;
 
             // Grab parameters
             byte[] param0 = (byte[])args[0];
 
             // Perform scan
-            Search.NextScan(_host, this, setProgress, ref result, Search.SearchType.EqualTo, false, param0);
+            Search.NextScan(_host, this, setProgress, result, Search.SearchType.EqualTo, false, param0);
         }
 
         public bool SupportSearchType(ISearchType sType)

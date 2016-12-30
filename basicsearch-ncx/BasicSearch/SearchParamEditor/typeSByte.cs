@@ -32,6 +32,13 @@ namespace BasicSearch.SearchParamEditor
             control = new UI.sbyteControl();
         }
 
+        public void GetUnprocessedParam(System.Windows.Forms.UserControl control, out object value)
+        {
+            value = null;
+            if (control != null && control is UI.sbyteControl)
+                value = (control as UI.sbyteControl).Value;
+        }
+
         public void SetParam(System.Windows.Forms.UserControl control, byte[] param)
         {
             // Make sure control is valid
@@ -44,7 +51,7 @@ namespace BasicSearch.SearchParamEditor
             param = null;
 
             // Make sure control is of proper type
-            if (control is UI.sbyteControl)
+            if (!(control is UI.sbyteControl))
                 return false;
 
             param = new byte[] { (byte)(control as UI.sbyteControl).Value };

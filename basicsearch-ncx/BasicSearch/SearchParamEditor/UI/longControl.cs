@@ -23,8 +23,9 @@ namespace BasicSearch.SearchParamEditor.UI
         {
             InitializeComponent();
 
+            numericUpDown1.IsSigned = true;
             numericUpDown1.Minimum = long.MinValue;
-            numericUpDown1.Maximum = long.MaxValue;
+            numericUpDown1.Maximum = ulong.MaxValue;
             numericUpDown1.Value = 0;
         }
     }

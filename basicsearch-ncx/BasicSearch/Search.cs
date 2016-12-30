@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NetCheatX.Core;
 using NetCheatX.Core.Interfaces;
 using NetCheatX.Core.UI;
+using System.Diagnostics;
 
 namespace BasicSearch
 {
@@ -24,10 +25,11 @@ namespace BasicSearch
             ValueBetween
         }
 
-        public static bool FirstScan(IPluginHost host, ISearchMethod method, Types.SetProgressCallback setProgress, Types.MemoryRange range, ref List<ISearchResult> result, SearchType type, bool signed, int align, byte[] param0, byte[] param1 = null)
+        public static bool FirstScan(IPluginHost host, ISearchMethod method, Types.SetProgressCallback setProgress, Types.MemoryRange range, NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> result, SearchType type, bool signed, int align, byte[] param0, byte[] param1 = null)
         {
             bool pass = false;
             int progress = 0, lastProgress = 0;
+            Stopwatch watch = new Stopwatch();
 
             // Return false if param is invalid
             if (param0 == null || param0.Length == 0 || (type == SearchType.ValueBetween && (param0 == null || param1.Length < 2)))
@@ -37,7 +39,7 @@ namespace BasicSearch
                 return false;
 
             // Define total range
-            ulong distance = range.stop - range.stop;
+            ulong distance = range.stop - range.start;
 
             // Define max block size
             ulong blockSize = SEARCH_BLOCK_SIZE;
@@ -46,7 +48,7 @@ namespace BasicSearch
 
             // Define block increment value
             // Subtract param0.Length-1 to ensure memory at end of blocks is scanned
-            ulong blockInc = blockSize - (ulong)(param0.Length - 1);
+            ulong blockInc = blockSize - (ulong)(param0.Length - align);
 
             // Initialize our buffers
             byte[] block = new byte[blockSize];
@@ -56,6 +58,7 @@ namespace BasicSearch
             setProgress.Invoke(method, 0, 100, "");
 
             // Loop through memory, grabbing blocks and comparing them
+            watch.Start();
             for (ulong addr = range.start; addr < range.stop; addr += blockInc)
             {
                 // Update progress bar
@@ -63,7 +66,7 @@ namespace BasicSearch
                 if (progress > lastProgress)
                 {
                     lastProgress = progress;
-                    setProgress.Invoke(method, progress, 100, result.Count.ToString() + " results found");
+                    setProgress.Invoke(method, progress, 100, result.Count().ToString("N0") + " results found");
                 }
 
                 // Update blockSize if range smaller than SEARCH_BLOCK_SIZE
@@ -73,7 +76,7 @@ namespace BasicSearch
                 // Grab block
                 if (host.ActiveCommunicator.GetBytes(addr, ref block))
                 {
-                    for (int off = 0; off < (int)blockSize; off += align)
+                    for (int off = 0; off < (int)blockInc; off += align)
                     {
                         // Copy section for comparison
                         Array.Copy(block, off, compare, 0, param0.Length);
@@ -114,31 +117,34 @@ namespace BasicSearch
                             case SearchType.ValueBetween:
                                 if (signed)
                                 {
-                                    pass = NetCheatX.Core.Bitlogic.Compare.BAGreaterThanOrEqualSigned(compare, param0) &
-                                        NetCheatX.Core.Bitlogic.Compare.BALessThanOrEqualSigned(compare, param1);
+                                    pass = NetCheatX.Core.Bitlogic.Compare.BAGreaterThanOrEqualSigned(compare, param0);
+                                    if (pass)
+                                        pass &= NetCheatX.Core.Bitlogic.Compare.BALessThanOrEqualSigned(compare, param1);
                                 }
                                 else
                                 {
-                                    pass = NetCheatX.Core.Bitlogic.Compare.BAGreaterThanOrEqualUnsigned(compare, param0) &
-                                        NetCheatX.Core.Bitlogic.Compare.BALessThanOrEqualUnsigned(compare, param1);
+                                    pass = NetCheatX.Core.Bitlogic.Compare.BAGreaterThanOrEqualUnsigned(compare, param0);
+                                    if (pass)
+                                        pass &= NetCheatX.Core.Bitlogic.Compare.BALessThanOrEqualUnsigned(compare, param1);
                                 }
                                 break;
                         }
 
                         // If passed then add the result
                         if (pass)
-                            result.Add(new NetCheatX.Core.Basic.BasicSearchResult() { Address = addr + (ulong)off, Value = compare });
+                            result.Add(new NetCheatX.Core.Basic.BasicSearchResult() { Address = addr + (ulong)off, Value = (byte[])compare.Clone() });
                     }
                 }
             }
+            watch.Stop();
 
             // Finish progress
-            setProgress.Invoke(method, 100, 100, result.Count.ToString() + " results found");
-
+            setProgress.Invoke(method, 100, 100, result.Count().ToString("N0") + " results found in " + watch.Elapsed.ToString("ss\\.fff") + " seconds");
+            
             return true;
         }
 
-        public static bool NextScan(IPluginHost host, ISearchMethod method, Types.SetProgressCallback setProgress, ref List<ISearchResult> result, SearchType type, bool signed, byte[] param0, byte[] param1 = null)
+        public static bool NextScan(IPluginHost host, ISearchMethod method, Types.SetProgressCallback setProgress, NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> result, SearchType type, bool signed, byte[] param0, byte[] param1 = null)
         {
             bool pass = false;
             int progress = 0, lastProgress = 0;
@@ -175,7 +181,7 @@ namespace BasicSearch
                 }
 
                 // Grab current result
-                resultEdit = (NetCheatX.Core.Basic.BasicSearchResult)result[off];
+                resultEdit = (NetCheatX.Core.Basic.BasicSearchResult)result.ElementAt(off);
 
                 // Update block if address is out of block range
                 if (resultEdit.Address > (lastAddr + SEARCH_BLOCK_SIZE - (ulong)(param0.Length - 1)) || off == 0)

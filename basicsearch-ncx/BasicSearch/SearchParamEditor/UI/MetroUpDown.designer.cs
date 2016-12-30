@@ -36,6 +36,7 @@
             // 
             // 
             // 
+            this.metroTextBox1.CustomButton.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.metroTextBox1.CustomButton.Image = null;
             this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(124, 2);
             this.metroTextBox1.CustomButton.Name = "";

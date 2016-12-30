@@ -38,7 +38,7 @@
             this.numericUpDown1.HexButton = true;
             this.numericUpDown1.Location = new System.Drawing.Point(0, 0);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            2147483647,
+            -1,
             0,
             0,
             0});

@@ -31,6 +31,13 @@ namespace BasicSearch.SearchParamEditor
             control = new UI.stringControl();
         }
 
+        public void GetUnprocessedParam(System.Windows.Forms.UserControl control, out object value)
+        {
+            value = null;
+            if (control != null && control is UI.stringControl)
+                value = (control as UI.stringControl).Value;
+        }
+
         public void SetParam(System.Windows.Forms.UserControl control, byte[] param)
         {
             // Make sure control is valid
@@ -43,7 +50,7 @@ namespace BasicSearch.SearchParamEditor
             param = null;
 
             // Make sure control is of proper type
-            if (control is UI.stringControl)
+            if (!(control is UI.stringControl))
                 return false;
 
             param = (control as UI.stringControl).UTF8 ?

@@ -33,6 +33,13 @@ namespace BasicSearch.SearchParamEditor
             control = new UI.longControl();
         }
 
+        public void GetUnprocessedParam(System.Windows.Forms.UserControl control, out object value)
+        {
+            value = null;
+            if (control != null && control is UI.longControl)
+                value = (control as UI.longControl).Value;
+        }
+
         public void SetParam(System.Windows.Forms.UserControl control, byte[] param)
         {
             // Make sure control is valid
@@ -45,7 +52,7 @@ namespace BasicSearch.SearchParamEditor
             param = null;
 
             // Make sure control is of proper type
-            if (control is UI.longControl)
+            if (!(control is UI.longControl))
                 return false;
 
             param = _host.ActiveCommunicator.PlatformBitConverter.GetBytes((control as UI.longControl).Value);

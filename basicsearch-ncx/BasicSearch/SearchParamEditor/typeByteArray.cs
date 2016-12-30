@@ -33,11 +33,19 @@ namespace BasicSearch.SearchParamEditor
             control = new UI.byteArrayControl();
         }
 
+        public void GetUnprocessedParam(System.Windows.Forms.UserControl control, out object value)
+        {
+            byte[] v;
+
+            ProcessParam(control, out v);
+            value = v;
+        }
+
         public void SetParam(System.Windows.Forms.UserControl control, byte[] param)
         {
             // Make sure control is valid
             if (control is UI.byteArrayControl)
-                (control as UI.byteArrayControl).Value = _host.ActiveCommunicator.PlatformBitConverter.ToString(param).Replace("-", "");
+                (control as UI.byteArrayControl).Value = _host.ActiveCommunicator.PlatformBitConverter.GetInverseEndianBitConverter().ToString(param).Replace("-", "");
         }
 
         public bool ProcessParam(System.Windows.Forms.UserControl control, out byte[] param)

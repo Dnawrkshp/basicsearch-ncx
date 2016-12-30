@@ -33,6 +33,15 @@ namespace BasicSearch.SearchParamEditor
             control = new UI.byteArrayControl();
         }
 
+        public void GetUnprocessedParam(System.Windows.Forms.UserControl control, out object value)
+        {
+            byte[] v;
+
+            ProcessParam(control, out v);
+            value = new sbyte[v.Length];
+            v.CopyTo((sbyte[])value, 0);
+        }
+
         public void SetParam(System.Windows.Forms.UserControl control, byte[] param)
         {
             // Make sure control is valid

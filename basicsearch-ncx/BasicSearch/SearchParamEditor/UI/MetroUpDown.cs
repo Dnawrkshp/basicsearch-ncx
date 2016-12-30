@@ -19,6 +19,7 @@ namespace BasicSearch.SearchParamEditor.UI
         private decimal _minValue = 0;
         private decimal _maxValue = 100;
         private bool _hexButton = false;
+        private bool _signed = false;
 
         public bool HexButton
         {
@@ -27,6 +28,20 @@ namespace BasicSearch.SearchParamEditor.UI
             {
                 _hexButton = value;
                 metroTextBox1.ShowButton = _hexButton;
+            }
+        }
+
+        public bool IsSigned
+        {
+            get { return _signed; }
+            set
+            {
+                _signed = value;
+
+                if (_signed)
+                    _minValue = (decimal)Maximum / (decimal)-2;
+                else
+                    _minValue = 0;
             }
         }
 
@@ -76,6 +91,11 @@ namespace BasicSearch.SearchParamEditor.UI
             {
                 _hex = value;
                 metroTextBox1.CustomButton.Image = Hexadecimal ? Properties.Resources.Hex : Properties.Resources.Decimal;
+
+
+                if (_value >= (ulong)(Maximum / 2))
+                    _value = (Maximum - _value) - 1;
+
                 UpdateText();
             }
         }
@@ -88,7 +108,16 @@ namespace BasicSearch.SearchParamEditor.UI
 
         public decimal Value
         {
-            get { return _value; }
+            get
+            {
+                if (!_signed)
+                    return _value;
+
+                if (_value >= (ulong)(Maximum / 2))
+                    return (Maximum - _value) - 1;
+
+                return _value;
+            }
             set
             {
                 _value = value;
@@ -104,7 +133,6 @@ namespace BasicSearch.SearchParamEditor.UI
         {
             InitializeComponent();
 
-            
             if (HexButton)
                 metroTextBox1.CustomButton.Image = Hexadecimal ? Properties.Resources.Hex : Properties.Resources.Decimal;
 
@@ -120,26 +148,26 @@ namespace BasicSearch.SearchParamEditor.UI
                 switch (_hexPlaces)
                 {
                     case 2: // 1 byte
-                        if (_minValue < 0)
+                        if (_signed && _value < 0)
                             metroTextBox1.Text = ((sbyte)_value).ToString("X" + _hexPlaces.ToString());
                         else
                             metroTextBox1.Text = ((byte)_value).ToString("X" + _hexPlaces.ToString());
                         break;
                     case 4: // 2 bytes
-                        if (_minValue < 0)
+                        if (_signed && _value < 0)
                             metroTextBox1.Text = ((short)_value).ToString("X" + _hexPlaces.ToString());
                         else
                             metroTextBox1.Text = ((ushort)_value).ToString("X" + _hexPlaces.ToString());
                         break;
                     case 8: // 4 bytes
-                        if (_minValue < 0)
+                        if (_signed && _value < 0)
                             metroTextBox1.Text = ((int)_value).ToString("X" + _hexPlaces.ToString());
                         else
                             metroTextBox1.Text = ((uint)_value).ToString("X" + _hexPlaces.ToString());
                         break;
                     case 16: // 8 bytes
                     default:
-                        if (_minValue < 0)
+                        if (_signed && _value < 0)
                             metroTextBox1.Text = ((long)_value).ToString("X" + _hexPlaces.ToString());
                         else
                             metroTextBox1.Text = ((ulong)_value).ToString("X" + _hexPlaces.ToString());
@@ -160,9 +188,47 @@ namespace BasicSearch.SearchParamEditor.UI
             try
             {
                 if (Hexadecimal)
-                    _value = (decimal)Convert.ToUInt64(text, 16);
+                {
+                    if (IsSigned)
+                    {
+                        switch (_hexPlaces)
+                        {
+                            case 16:
+                                _value = (decimal)Convert.ToInt64(text, 16);
+                                break;
+                            case 8:
+                                _value = (decimal)Convert.ToInt32(text, 16);
+                                break;
+                            case 4:
+                            case 2:
+                                _value = (decimal)Convert.ToInt16(text, 16);
+                                break;
+                            default:
+                                _value = (decimal)Convert.ToInt64(text, 16);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        _value = (decimal)Convert.ToUInt64(text, 16);
+                    }
+                    
+                }
                 else
-                    _value = decimal.Parse(text);
+                {
+                    decimal val = decimal.Parse(text);
+                    if (_signed)
+                    {
+                        if (val < (ulong)(Maximum/2))
+                            _value = val;
+                        else
+                            _value = (Maximum - decimal.Parse(text)) - 1;
+                    }
+                    else
+                    {
+                        _value = decimal.Parse(text);
+                    }
+                }
             }
             catch
             {
@@ -190,6 +256,7 @@ namespace BasicSearch.SearchParamEditor.UI
             {
                 ValidateNewText(metroTextBox1.Text);
                 e.Handled = true;
+                e.SuppressKeyPress = true;
             }
             else if (e.KeyCode == Keys.Up)
             {
@@ -216,5 +283,6 @@ namespace BasicSearch.SearchParamEditor.UI
             UpdateText();
             metroTextBox1.SelectionStart = metroTextBox1.Text.Length;
         }
+
     }
 }

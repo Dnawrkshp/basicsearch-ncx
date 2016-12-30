@@ -1,4 +1,4 @@
-﻿namespace BasicSearch.UI
+namespace BasicSearch.UI
 {
     partial class SearchUI
     {
@@ -28,295 +28,324 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.btStopScan = new MetroFramework.Controls.MetroButton();
-            this.btBeginScan = new MetroFramework.Controls.MetroButton();
-            this.pbScanProgress = new MetroFramework.Controls.MetroProgressBar();
-            this.labStopAddress = new MetroFramework.Controls.MetroLabel();
-            this.labStartAddress = new MetroFramework.Controls.MetroLabel();
-            this.labScanDataType = new MetroFramework.Controls.MetroLabel();
-            this.labScanMethod = new MetroFramework.Controls.MetroLabel();
-            this.tbStopAddress = new MetroFramework.Controls.MetroTextBox();
-            this.tbStartAddress = new MetroFramework.Controls.MetroTextBox();
-            this.cbScanMethod = new MetroFramework.Controls.MetroComboBox();
-            this.cbScanDataType = new MetroFramework.Controls.MetroComboBox();
-            this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.SplitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.PbScanProgress = new BasicSearch.UI.SearchProgressBar();
+            this.BtStopScan = new MetroFramework.Controls.MetroButton();
+            this.BtBeginScan = new MetroFramework.Controls.MetroButton();
+            this.LabStopAddress = new MetroFramework.Controls.MetroLabel();
+            this.LabStartAddress = new MetroFramework.Controls.MetroLabel();
+            this.LabScanDataType = new MetroFramework.Controls.MetroLabel();
+            this.LabScanMethod = new MetroFramework.Controls.MetroLabel();
+            this.TbStopAddress = new MetroFramework.Controls.MetroTextBox();
+            this.TbStartAddress = new MetroFramework.Controls.MetroTextBox();
+            this.CbScanMethod = new MetroFramework.Controls.MetroComboBox();
+            this.CbScanDataType = new MetroFramework.Controls.MetroComboBox();
+            this.ResultBox = new BasicSearch.UI.AddressListBox();
+            this.MetroToolTip1 = new MetroFramework.Components.MetroToolTip();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
+            this.SplitContainer1.Panel1.SuspendLayout();
+            this.SplitContainer1.Panel2.SuspendLayout();
+            this.SplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer2)).BeginInit();
+            this.SplitContainer2.Panel1.SuspendLayout();
+            this.SplitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // SplitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitContainer1.IsSplitterFixed = true;
+            this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.SplitContainer1.Name = "SplitContainer1";
+            this.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // SplitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(885, 639);
-            this.splitContainer1.SplitterDistance = 193;
-            this.splitContainer1.TabIndex = 0;
+            this.SplitContainer1.Panel1.Controls.Add(this.SplitContainer2);
             // 
-            // splitContainer2
+            // SplitContainer1.Panel2
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.SplitContainer1.Panel2.Controls.Add(this.ResultBox);
+            this.SplitContainer1.Size = new System.Drawing.Size(885, 639);
+            this.SplitContainer1.SplitterDistance = 193;
+            this.SplitContainer1.TabIndex = 0;
             // 
-            // splitContainer2.Panel1
+            // SplitContainer2
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.btStopScan);
-            this.splitContainer2.Panel1.Controls.Add(this.btBeginScan);
-            this.splitContainer2.Panel1.Controls.Add(this.pbScanProgress);
-            this.splitContainer2.Panel1.Controls.Add(this.labStopAddress);
-            this.splitContainer2.Panel1.Controls.Add(this.labStartAddress);
-            this.splitContainer2.Panel1.Controls.Add(this.labScanDataType);
-            this.splitContainer2.Panel1.Controls.Add(this.labScanMethod);
-            this.splitContainer2.Panel1.Controls.Add(this.tbStopAddress);
-            this.splitContainer2.Panel1.Controls.Add(this.tbStartAddress);
-            this.splitContainer2.Panel1.Controls.Add(this.cbScanMethod);
-            this.splitContainer2.Panel1.Controls.Add(this.cbScanDataType);
-            this.splitContainer2.Size = new System.Drawing.Size(885, 193);
-            this.splitContainer2.SplitterDistance = 110;
-            this.splitContainer2.TabIndex = 0;
+            this.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitContainer2.IsSplitterFixed = true;
+            this.SplitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.SplitContainer2.Name = "SplitContainer2";
+            this.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // btStopScan
+            // SplitContainer2.Panel1
             // 
-            this.btStopScan.Location = new System.Drawing.Point(93, 82);
-            this.btStopScan.Name = "btStopScan";
-            this.btStopScan.Size = new System.Drawing.Size(75, 23);
-            this.btStopScan.TabIndex = 10;
-            this.btStopScan.Tag = "";
-            this.btStopScan.Text = "Stop";
-            this.btStopScan.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.btStopScan, "Stop running scan.");
-            this.btStopScan.UseSelectable = true;
-            this.btStopScan.Click += new System.EventHandler(this.btStopScan_Click);
+            this.SplitContainer2.Panel1.Controls.Add(this.PbScanProgress);
+            this.SplitContainer2.Panel1.Controls.Add(this.BtStopScan);
+            this.SplitContainer2.Panel1.Controls.Add(this.BtBeginScan);
+            this.SplitContainer2.Panel1.Controls.Add(this.LabStopAddress);
+            this.SplitContainer2.Panel1.Controls.Add(this.LabStartAddress);
+            this.SplitContainer2.Panel1.Controls.Add(this.LabScanDataType);
+            this.SplitContainer2.Panel1.Controls.Add(this.LabScanMethod);
+            this.SplitContainer2.Panel1.Controls.Add(this.TbStopAddress);
+            this.SplitContainer2.Panel1.Controls.Add(this.TbStartAddress);
+            this.SplitContainer2.Panel1.Controls.Add(this.CbScanMethod);
+            this.SplitContainer2.Panel1.Controls.Add(this.CbScanDataType);
+            this.SplitContainer2.Size = new System.Drawing.Size(885, 193);
+            this.SplitContainer2.SplitterDistance = 110;
+            this.SplitContainer2.TabIndex = 0;
             // 
-            // btBeginScan
+            // PbScanProgress
             // 
-            this.btBeginScan.Location = new System.Drawing.Point(12, 82);
-            this.btBeginScan.Name = "btBeginScan";
-            this.btBeginScan.Size = new System.Drawing.Size(75, 23);
-            this.btBeginScan.TabIndex = 9;
-            this.btBeginScan.Tag = "";
-            this.btBeginScan.Text = "Start Initial";
-            this.btBeginScan.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.btBeginScan, "Begin scan.");
-            this.btBeginScan.UseSelectable = true;
-            this.btBeginScan.Click += new System.EventHandler(this.btBeginScan_Click);
+            this.PbScanProgress.HideProgressText = false;
+            this.PbScanProgress.LeftText = "";
+            this.PbScanProgress.Location = new System.Drawing.Point(174, 82);
+            this.PbScanProgress.Name = "PbScanProgress";
+            this.PbScanProgress.Size = new System.Drawing.Size(699, 23);
+            this.PbScanProgress.TabIndex = 0;
             // 
-            // pbScanProgress
+            // BtStopScan
             // 
-            this.pbScanProgress.HideProgressText = false;
-            this.pbScanProgress.Location = new System.Drawing.Point(174, 82);
-            this.pbScanProgress.Name = "pbScanProgress";
-            this.pbScanProgress.Size = new System.Drawing.Size(699, 23);
-            this.pbScanProgress.TabIndex = 8;
-            this.pbScanProgress.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.pbScanProgress, "Scan progress.");
-            this.pbScanProgress.Value = 20;
+            this.BtStopScan.Enabled = false;
+            this.BtStopScan.Location = new System.Drawing.Point(93, 82);
+            this.BtStopScan.Name = "BtStopScan";
+            this.BtStopScan.Size = new System.Drawing.Size(75, 23);
+            this.BtStopScan.TabIndex = 10;
+            this.BtStopScan.Tag = "";
+            this.BtStopScan.Text = "Stop";
+            this.BtStopScan.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MetroToolTip1.SetToolTip(this.BtStopScan, "Stop running scan.");
+            this.BtStopScan.UseSelectable = true;
+            this.BtStopScan.Click += new System.EventHandler(this.BtStopScan_Click);
             // 
-            // labStopAddress
+            // BtBeginScan
             // 
-            this.labStopAddress.AutoSize = true;
-            this.labStopAddress.BackColor = System.Drawing.Color.Transparent;
-            this.labStopAddress.Location = new System.Drawing.Point(606, 52);
-            this.labStopAddress.Name = "labStopAddress";
-            this.labStopAddress.Size = new System.Drawing.Size(87, 19);
-            this.labStopAddress.TabIndex = 7;
-            this.labStopAddress.Text = "Stop Address";
-            this.labStopAddress.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.labStopAddress.UseCustomBackColor = true;
+            this.BtBeginScan.Location = new System.Drawing.Point(12, 82);
+            this.BtBeginScan.Name = "BtBeginScan";
+            this.BtBeginScan.Size = new System.Drawing.Size(75, 23);
+            this.BtBeginScan.TabIndex = 9;
+            this.BtBeginScan.Tag = "";
+            this.BtBeginScan.Text = "Start Initial";
+            this.BtBeginScan.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MetroToolTip1.SetToolTip(this.BtBeginScan, "Begin scan.");
+            this.BtBeginScan.UseSelectable = true;
+            this.BtBeginScan.Click += new System.EventHandler(this.BtBeginScan_Click);
             // 
-            // labStartAddress
+            // LabStopAddress
             // 
-            this.labStartAddress.AutoSize = true;
-            this.labStartAddress.BackColor = System.Drawing.Color.Transparent;
-            this.labStartAddress.Location = new System.Drawing.Point(605, 16);
-            this.labStartAddress.Name = "labStartAddress";
-            this.labStartAddress.Size = new System.Drawing.Size(88, 19);
-            this.labStartAddress.TabIndex = 6;
-            this.labStartAddress.Text = "Start Address";
-            this.labStartAddress.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.labStartAddress.UseCustomBackColor = true;
+            this.LabStopAddress.AutoSize = true;
+            this.LabStopAddress.BackColor = System.Drawing.Color.Transparent;
+            this.LabStopAddress.Location = new System.Drawing.Point(606, 52);
+            this.LabStopAddress.Name = "LabStopAddress";
+            this.LabStopAddress.Size = new System.Drawing.Size(87, 19);
+            this.LabStopAddress.TabIndex = 7;
+            this.LabStopAddress.Text = "Stop Address";
+            this.LabStopAddress.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.LabStopAddress.UseCustomBackColor = true;
             // 
-            // labScanDataType
+            // LabStartAddress
             // 
-            this.labScanDataType.AutoSize = true;
-            this.labScanDataType.BackColor = System.Drawing.Color.Transparent;
-            this.labScanDataType.Location = new System.Drawing.Point(28, 52);
-            this.labScanDataType.Name = "labScanDataType";
-            this.labScanDataType.Size = new System.Drawing.Size(70, 19);
-            this.labScanDataType.TabIndex = 5;
-            this.labScanDataType.Text = "Value Type";
-            this.labScanDataType.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.labScanDataType.UseCustomBackColor = true;
+            this.LabStartAddress.AutoSize = true;
+            this.LabStartAddress.BackColor = System.Drawing.Color.Transparent;
+            this.LabStartAddress.Location = new System.Drawing.Point(605, 16);
+            this.LabStartAddress.Name = "LabStartAddress";
+            this.LabStartAddress.Size = new System.Drawing.Size(88, 19);
+            this.LabStartAddress.TabIndex = 6;
+            this.LabStartAddress.Text = "Start Address";
+            this.LabStartAddress.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.LabStartAddress.UseCustomBackColor = true;
             // 
-            // labScanMethod
+            // LabScanDataType
             // 
-            this.labScanMethod.AutoSize = true;
-            this.labScanMethod.BackColor = System.Drawing.Color.Transparent;
-            this.labScanMethod.Location = new System.Drawing.Point(12, 16);
-            this.labScanMethod.Name = "labScanMethod";
-            this.labScanMethod.Size = new System.Drawing.Size(86, 19);
-            this.labScanMethod.TabIndex = 4;
-            this.labScanMethod.Text = "Scan Method";
-            this.labScanMethod.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.labScanMethod.UseCustomBackColor = true;
+            this.LabScanDataType.AutoSize = true;
+            this.LabScanDataType.BackColor = System.Drawing.Color.Transparent;
+            this.LabScanDataType.Location = new System.Drawing.Point(28, 52);
+            this.LabScanDataType.Name = "LabScanDataType";
+            this.LabScanDataType.Size = new System.Drawing.Size(70, 19);
+            this.LabScanDataType.TabIndex = 5;
+            this.LabScanDataType.Text = "Value Type";
+            this.LabScanDataType.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.LabScanDataType.UseCustomBackColor = true;
             // 
-            // tbStopAddress
+            // LabScanMethod
+            // 
+            this.LabScanMethod.AutoSize = true;
+            this.LabScanMethod.BackColor = System.Drawing.Color.Transparent;
+            this.LabScanMethod.Location = new System.Drawing.Point(12, 16);
+            this.LabScanMethod.Name = "LabScanMethod";
+            this.LabScanMethod.Size = new System.Drawing.Size(86, 19);
+            this.LabScanMethod.TabIndex = 4;
+            this.LabScanMethod.Text = "Scan Method";
+            this.LabScanMethod.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.LabScanMethod.UseCustomBackColor = true;
+            // 
+            // TbStopAddress
             // 
             // 
             // 
             // 
-            this.tbStopAddress.CustomButton.Image = null;
-            this.tbStopAddress.CustomButton.Location = new System.Drawing.Point(148, 1);
-            this.tbStopAddress.CustomButton.Name = "";
-            this.tbStopAddress.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.tbStopAddress.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbStopAddress.CustomButton.TabIndex = 1;
-            this.tbStopAddress.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbStopAddress.CustomButton.UseSelectable = true;
-            this.tbStopAddress.CustomButton.Visible = false;
-            this.tbStopAddress.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.tbStopAddress.Lines = new string[] {
+            this.TbStopAddress.CustomButton.Image = null;
+            this.TbStopAddress.CustomButton.Location = new System.Drawing.Point(148, 1);
+            this.TbStopAddress.CustomButton.Name = "";
+            this.TbStopAddress.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.TbStopAddress.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TbStopAddress.CustomButton.TabIndex = 1;
+            this.TbStopAddress.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TbStopAddress.CustomButton.UseSelectable = true;
+            this.TbStopAddress.CustomButton.Visible = false;
+            this.TbStopAddress.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.TbStopAddress.Lines = new string[] {
         "00000000"};
-            this.tbStopAddress.Location = new System.Drawing.Point(697, 47);
-            this.tbStopAddress.MaxLength = 32767;
-            this.tbStopAddress.Name = "tbStopAddress";
-            this.tbStopAddress.PasswordChar = '\0';
-            this.tbStopAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbStopAddress.SelectedText = "";
-            this.tbStopAddress.SelectionLength = 0;
-            this.tbStopAddress.SelectionStart = 0;
-            this.tbStopAddress.ShortcutsEnabled = true;
-            this.tbStopAddress.ShowClearButton = true;
-            this.tbStopAddress.Size = new System.Drawing.Size(176, 29);
-            this.tbStopAddress.TabIndex = 3;
-            this.tbStopAddress.Text = "00000000";
-            this.tbStopAddress.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.tbStopAddress, "Stop address of scan.");
-            this.tbStopAddress.UseSelectable = true;
-            this.tbStopAddress.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbStopAddress.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.TbStopAddress.Location = new System.Drawing.Point(697, 47);
+            this.TbStopAddress.MaxLength = 32767;
+            this.TbStopAddress.Name = "TbStopAddress";
+            this.TbStopAddress.PasswordChar = '\0';
+            this.TbStopAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TbStopAddress.SelectedText = "";
+            this.TbStopAddress.SelectionLength = 0;
+            this.TbStopAddress.SelectionStart = 0;
+            this.TbStopAddress.ShortcutsEnabled = true;
+            this.TbStopAddress.ShowClearButton = true;
+            this.TbStopAddress.Size = new System.Drawing.Size(176, 29);
+            this.TbStopAddress.TabIndex = 3;
+            this.TbStopAddress.Text = "00000000";
+            this.TbStopAddress.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MetroToolTip1.SetToolTip(this.TbStopAddress, "Stop address of scan.");
+            this.TbStopAddress.UseSelectable = true;
+            this.TbStopAddress.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TbStopAddress.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // tbStartAddress
-            // 
-            // 
+            // TbStartAddress
             // 
             // 
-            this.tbStartAddress.CustomButton.Image = null;
-            this.tbStartAddress.CustomButton.Location = new System.Drawing.Point(148, 1);
-            this.tbStartAddress.CustomButton.Name = "";
-            this.tbStartAddress.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.tbStartAddress.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbStartAddress.CustomButton.TabIndex = 1;
-            this.tbStartAddress.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbStartAddress.CustomButton.UseSelectable = true;
-            this.tbStartAddress.CustomButton.Visible = false;
-            this.tbStartAddress.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.tbStartAddress.Lines = new string[] {
+            // 
+            // 
+            this.TbStartAddress.CustomButton.Image = null;
+            this.TbStartAddress.CustomButton.Location = new System.Drawing.Point(148, 1);
+            this.TbStartAddress.CustomButton.Name = "";
+            this.TbStartAddress.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.TbStartAddress.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TbStartAddress.CustomButton.TabIndex = 1;
+            this.TbStartAddress.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TbStartAddress.CustomButton.UseSelectable = true;
+            this.TbStartAddress.CustomButton.Visible = false;
+            this.TbStartAddress.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.TbStartAddress.Lines = new string[] {
         "00000000"};
-            this.tbStartAddress.Location = new System.Drawing.Point(697, 12);
-            this.tbStartAddress.MaxLength = 32767;
-            this.tbStartAddress.Name = "tbStartAddress";
-            this.tbStartAddress.PasswordChar = '\0';
-            this.tbStartAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbStartAddress.SelectedText = "";
-            this.tbStartAddress.SelectionLength = 0;
-            this.tbStartAddress.SelectionStart = 0;
-            this.tbStartAddress.ShortcutsEnabled = true;
-            this.tbStartAddress.ShowClearButton = true;
-            this.tbStartAddress.Size = new System.Drawing.Size(176, 29);
-            this.tbStartAddress.TabIndex = 2;
-            this.tbStartAddress.Text = "00000000";
-            this.tbStartAddress.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.tbStartAddress, "Start address of scan.");
-            this.tbStartAddress.UseSelectable = true;
-            this.tbStartAddress.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbStartAddress.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.TbStartAddress.Location = new System.Drawing.Point(697, 12);
+            this.TbStartAddress.MaxLength = 32767;
+            this.TbStartAddress.Name = "TbStartAddress";
+            this.TbStartAddress.PasswordChar = '\0';
+            this.TbStartAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TbStartAddress.SelectedText = "";
+            this.TbStartAddress.SelectionLength = 0;
+            this.TbStartAddress.SelectionStart = 0;
+            this.TbStartAddress.ShortcutsEnabled = true;
+            this.TbStartAddress.ShowClearButton = true;
+            this.TbStartAddress.Size = new System.Drawing.Size(176, 29);
+            this.TbStartAddress.TabIndex = 2;
+            this.TbStartAddress.Text = "00000000";
+            this.TbStartAddress.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MetroToolTip1.SetToolTip(this.TbStartAddress, "Start address of scan.");
+            this.TbStartAddress.UseSelectable = true;
+            this.TbStartAddress.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TbStartAddress.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // cbScanMethod
+            // CbScanMethod
             // 
-            this.cbScanMethod.FormattingEnabled = true;
-            this.cbScanMethod.ItemHeight = 23;
-            this.cbScanMethod.Location = new System.Drawing.Point(104, 12);
-            this.cbScanMethod.Name = "cbScanMethod";
-            this.cbScanMethod.PromptText = "Scan Method";
-            this.cbScanMethod.Size = new System.Drawing.Size(495, 29);
-            this.cbScanMethod.TabIndex = 1;
-            this.cbScanMethod.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.cbScanMethod, "Scan Method.");
-            this.cbScanMethod.UseSelectable = true;
-            this.cbScanMethod.SelectedIndexChanged += new System.EventHandler(this.cbScanMethod_SelectedIndexChanged);
+            this.CbScanMethod.FormattingEnabled = true;
+            this.CbScanMethod.ItemHeight = 23;
+            this.CbScanMethod.Location = new System.Drawing.Point(104, 12);
+            this.CbScanMethod.Name = "CbScanMethod";
+            this.CbScanMethod.PromptText = "Scan Method";
+            this.CbScanMethod.Size = new System.Drawing.Size(495, 29);
+            this.CbScanMethod.TabIndex = 1;
+            this.CbScanMethod.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MetroToolTip1.SetToolTip(this.CbScanMethod, "Scan Method.");
+            this.CbScanMethod.UseSelectable = true;
+            this.CbScanMethod.SelectedIndexChanged += new System.EventHandler(this.CbScanMethod_SelectedIndexChanged);
             // 
-            // cbScanDataType
+            // CbScanDataType
             // 
-            this.cbScanDataType.FormattingEnabled = true;
-            this.cbScanDataType.ItemHeight = 23;
-            this.cbScanDataType.Location = new System.Drawing.Point(104, 47);
-            this.cbScanDataType.Name = "cbScanDataType";
-            this.cbScanDataType.PromptText = "Scan Value Type";
-            this.cbScanDataType.Size = new System.Drawing.Size(495, 29);
-            this.cbScanDataType.TabIndex = 0;
-            this.cbScanDataType.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroToolTip1.SetToolTip(this.cbScanDataType, "Scan Data Type.");
-            this.cbScanDataType.UseSelectable = true;
-            this.cbScanDataType.SelectedIndexChanged += new System.EventHandler(this.cbScanDataType_SelectedIndexChanged);
+            this.CbScanDataType.FormattingEnabled = true;
+            this.CbScanDataType.ItemHeight = 23;
+            this.CbScanDataType.Location = new System.Drawing.Point(104, 47);
+            this.CbScanDataType.Name = "CbScanDataType";
+            this.CbScanDataType.PromptText = "Scan Value Type";
+            this.CbScanDataType.Size = new System.Drawing.Size(495, 29);
+            this.CbScanDataType.TabIndex = 0;
+            this.CbScanDataType.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.MetroToolTip1.SetToolTip(this.CbScanDataType, "Scan Data Type.");
+            this.CbScanDataType.UseSelectable = true;
+            this.CbScanDataType.SelectedIndexChanged += new System.EventHandler(this.CbScanDataType_SelectedIndexChanged);
             // 
-            // metroToolTip1
+            // ResultBox
             // 
-            this.metroToolTip1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroToolTip1.StyleManager = null;
-            this.metroToolTip1.Theme = MetroFramework.MetroThemeStyle.Default;
+            this.ResultBox.AllowSorting = true;
+            this.ResultBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResultBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ResultBox.FullRowSelect = true;
+            this.ResultBox.GridLines = true;
+            this.ResultBox.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ResultBox.HideSelection = false;
+            this.ResultBox.LabelWrap = false;
+            this.ResultBox.List = null;
+            this.ResultBox.Location = new System.Drawing.Point(0, 0);
+            this.ResultBox.Name = "ResultBox";
+            this.ResultBox.OwnerDraw = true;
+            this.ResultBox.Size = new System.Drawing.Size(885, 442);
+            this.ResultBox.TabIndex = 0;
+            this.ResultBox.Type = null;
+            this.ResultBox.UseCompatibleStateImageBehavior = false;
+            this.ResultBox.UseSelectable = true;
+            this.ResultBox.View = System.Windows.Forms.View.Details;
+            this.ResultBox.VirtualMode = true;
+            // 
+            // MetroToolTip1
+            // 
+            this.MetroToolTip1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.MetroToolTip1.StyleManager = null;
+            this.MetroToolTip1.Theme = MetroFramework.MetroThemeStyle.Default;
             // 
             // SearchUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 639);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.SplitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "SearchUI";
             this.Text = "Basic Scanner";
             this.Resize += new System.EventHandler(this.SearchUI_Resize);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.SplitContainer1.Panel1.ResumeLayout(false);
+            this.SplitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).EndInit();
+            this.SplitContainer1.ResumeLayout(false);
+            this.SplitContainer2.Panel1.ResumeLayout(false);
+            this.SplitContainer2.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitContainer2)).EndInit();
+            this.SplitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private MetroFramework.Controls.MetroTextBox tbStartAddress;
-        private MetroFramework.Controls.MetroComboBox cbScanMethod;
-        private MetroFramework.Controls.MetroComboBox cbScanDataType;
-        private MetroFramework.Controls.MetroTextBox tbStopAddress;
-        private MetroFramework.Controls.MetroLabel labScanMethod;
-        private MetroFramework.Controls.MetroLabel labScanDataType;
-        private MetroFramework.Controls.MetroLabel labStopAddress;
-        private MetroFramework.Controls.MetroLabel labStartAddress;
-        private MetroFramework.Controls.MetroProgressBar pbScanProgress;
-        private MetroFramework.Controls.MetroButton btStopScan;
-        private MetroFramework.Controls.MetroButton btBeginScan;
-        private MetroFramework.Components.MetroToolTip metroToolTip1;
+        private System.Windows.Forms.SplitContainer SplitContainer1;
+        private System.Windows.Forms.SplitContainer SplitContainer2;
+        private MetroFramework.Controls.MetroTextBox TbStartAddress;
+        private MetroFramework.Controls.MetroComboBox CbScanMethod;
+        private MetroFramework.Controls.MetroComboBox CbScanDataType;
+        private MetroFramework.Controls.MetroTextBox TbStopAddress;
+        private MetroFramework.Controls.MetroLabel LabScanMethod;
+        private MetroFramework.Controls.MetroLabel LabScanDataType;
+        private MetroFramework.Controls.MetroLabel LabStopAddress;
+        private MetroFramework.Controls.MetroLabel LabStartAddress;
+        private MetroFramework.Controls.MetroButton BtStopScan;
+        private MetroFramework.Controls.MetroButton BtBeginScan;
+        private MetroFramework.Components.MetroToolTip MetroToolTip1;
+        private AddressListBox ResultBox;
+        private SearchProgressBar PbScanProgress;
     }
 }
