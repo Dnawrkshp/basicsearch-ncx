@@ -57,7 +57,6 @@ namespace BasicSearch.SearchType
         public void Dispose(IPluginHost host)
         {
             _host = null;
-            _version = null;
         }
     }
 }

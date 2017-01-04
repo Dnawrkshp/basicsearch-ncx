@@ -77,6 +77,7 @@ namespace BasicSearch.UI
             this.RetrieveVirtualItem += AddressListBox_RetrieveVirtualItem;
             this.ColumnWidthChanging += AddressListBox_ColumnWidthChanging;
             this.MouseDoubleClick += AddressListBox_MouseDoubleClick;
+            this.MouseWheel += AddressListBox_MouseWheel;
         }
 
         #region Draw
@@ -115,10 +116,21 @@ namespace BasicSearch.UI
         {
             if (e.ItemIndex >= 0 && e.ItemIndex < _list.Count && Type != null && e.Item.Selected)
             {
-                Rectangle rowBounds = e.Bounds;
+                /*
                 int leftMargin = e.Item.GetBounds(ItemBoundsPortion.Label).Left;
-                Rectangle bounds = new Rectangle(leftMargin, rowBounds.Top, rowBounds.Width - leftMargin, rowBounds.Height);
+                Rectangle bounds = new Rectangle(leftMargin, e.Bounds.Top, e.Bounds.Width - leftMargin, e.Bounds.Height);
                 e.Graphics.FillRectangle(MetroBlue, bounds);
+
+                bounds.X = 0;
+                */
+
+                Rectangle bounds = e.Bounds;
+                bounds.Width = 0;
+                for (int x = 0; x < this.Columns.Count; x++)
+                {
+                    bounds = new Rectangle(bounds.Left + bounds.Width, e.Bounds.Top, this.Columns[x].Width, e.Bounds.Height);
+                    OnDrawSubItem(new DrawListViewSubItemEventArgs(e.Graphics, bounds, e.Item, e.Item.SubItems[x], e.ItemIndex, x, this.Columns[x], e.State));
+                }
             }
             else
                 e.DrawDefault = false;
@@ -135,6 +147,9 @@ namespace BasicSearch.UI
 
             ListViewItem item = this.Items[this.SelectedIndices[0]];
             ListViewItem.ListViewSubItem subitem = item.GetSubItemAt(e.X, e.Y);
+
+            if (subitem == null)
+                return;
 
             _textBox.Size = subitem.Bounds.Size;
             if (subitem.Bounds.Width == item.Bounds.Width)
@@ -161,6 +176,11 @@ namespace BasicSearch.UI
         private void TextBox_GotFocus(object sender, EventArgs e)
         {
             _textBox.Visible = true;
+        }
+
+        private void AddressListBox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            _textBox.Visible = false;
         }
 
         private void ResultUpdated(object sender, Types.SearchResultUpdatedEventArgs[] e)

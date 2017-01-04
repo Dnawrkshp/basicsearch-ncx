@@ -23,10 +23,15 @@ namespace BasicSearch.UI
         private Types.SearchMode _scanState = Types.SearchMode.First;
         private Thread _searchThread;
 
+        private ulong _lastStart = 0;
+        private ulong _lastStop = 0;
+        private object[] _lastParams = null;
+
         private AddOn.SearchUIAddOn _searchUIAddOn = null;
         private IPluginHost _host = null;
         private NetCheatX.Core.Containers.SearchResultContainer<ISearchResult> _searchResults = new NetCheatX.Core.Containers.SearchResultContainer<ISearchResult>();
         private bool _isFirstScan = true;
+        private MetroFramework.Controls.MetroContextMenu _emptyContextMenu = null;
 
         // Tooltip text for each ISearchMethod and ISearchType
         private Dictionary<ISearchMethod, string> _cbScanMethodToolTips = new Dictionary<ISearchMethod, string>();
@@ -57,6 +62,8 @@ namespace BasicSearch.UI
             _host = host;
 
             InitializeComponent();
+
+            _emptyContextMenu = new MetroFramework.Controls.MetroContextMenu(this.components);
 
             this.Shown += SearchUI_Shown;
 
@@ -153,9 +160,13 @@ namespace BasicSearch.UI
             GetScanArgsResult result = GetScanArgs(out ISearchType type, out var method, out ulong start, out ulong stop, out var param);
             if (result != GetScanArgsResult.SUCCESS)
             {
-                MetroFramework.MetroMessageBox.Show(Application.OpenForms["Display"], result.ToString(), "Scan failed");
+                MetroFramework.MetroMessageBox.Show(Application.OpenForms["Display"], result.ToString(), "Scan failed.");
                 return;
             }
+
+            _lastStart = start;
+            _lastStop = stop;
+            _lastParams = param;
 
             SetSettings();
             if (_scanState == Types.SearchMode.First)
@@ -187,6 +198,40 @@ namespace BasicSearch.UI
             else if (this.BtStopScan.Text == "Stop")
             {
 
+            }
+        }
+
+        private void ResultBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            ListView.SelectedIndexCollection selectedIndices;
+            if (e.Button == MouseButtons.Right)
+            {
+                selectedIndices = ResultBox.SelectedIndices;
+                if (selectedIndices.Count == 0)
+                {
+                    CmResults.Show(ResultBox, e.Location);
+                    return;
+                }
+
+                // The arguments provided to plugins are:
+                //  Active Search Method
+                //  Active Search Type
+                //  Start Address
+                //  Stop Address
+                //  Input params
+                //  List of selected indices
+                //  List of search results
+                object[] data = new object[7];
+
+                data[0] = (CbScanMethod.SelectedItem as CBItem).Plugin;
+                data[1] = (CbScanDataType.SelectedItem as CBItem).Plugin;
+                data[2] = _lastStart;
+                data[3] = _lastStop;
+                data[4] = _lastParams;
+                data[5] = selectedIndices;
+                data[6] = ResultBox.List;
+
+                CmResults.XShow(_emptyContextMenu, ResultBox, e.Location, _host, new string[] { "search", "results", "scan", "basicsearch" }, data);
             }
         }
 

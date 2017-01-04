@@ -55,6 +55,11 @@ namespace BasicSearch.AddOn
             return false;
         }
 
+        public Types.ContextMenuPath[] OnXShow(string[] tags, Type[] supportedOutputTypes)
+        {
+            return null;
+        }
+
         public void Initialize(IPluginHost host)
         {
             _host = host;

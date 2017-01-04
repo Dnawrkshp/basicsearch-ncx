@@ -28,6 +28,7 @@ namespace BasicSearch.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
             this.SplitContainer2 = new System.Windows.Forms.SplitContainer();
             this.PbScanProgress = new BasicSearch.UI.SearchProgressBar();
@@ -43,6 +44,10 @@ namespace BasicSearch.UI
             this.CbScanDataType = new MetroFramework.Controls.MetroComboBox();
             this.ResultBox = new BasicSearch.UI.AddressListBox();
             this.MetroToolTip1 = new MetroFramework.Components.MetroToolTip();
+            this.CmResults = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.refreshSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
             this.SplitContainer1.Panel2.SuspendLayout();
@@ -50,6 +55,7 @@ namespace BasicSearch.UI
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer2)).BeginInit();
             this.SplitContainer2.Panel1.SuspendLayout();
             this.SplitContainer2.SuspendLayout();
+            this.CmResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // SplitContainer1
@@ -301,12 +307,40 @@ namespace BasicSearch.UI
             this.ResultBox.UseSelectable = true;
             this.ResultBox.View = System.Windows.Forms.View.Details;
             this.ResultBox.VirtualMode = true;
+            this.ResultBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ResultBox_MouseDown);
             // 
             // MetroToolTip1
             // 
             this.MetroToolTip1.Style = MetroFramework.MetroColorStyle.Blue;
             this.MetroToolTip1.StyleManager = null;
             this.MetroToolTip1.Theme = MetroFramework.MetroThemeStyle.Default;
+            // 
+            // CmResults
+            // 
+            this.CmResults.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshSelectedToolStripMenuItem,
+            this.refreshAllToolStripMenuItem,
+            this.removeToolStripMenuItem});
+            this.CmResults.Name = "metroContextMenu1";
+            this.CmResults.Size = new System.Drawing.Size(161, 70);
+            // 
+            // refreshSelectedToolStripMenuItem
+            // 
+            this.refreshSelectedToolStripMenuItem.Name = "refreshSelectedToolStripMenuItem";
+            this.refreshSelectedToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.refreshSelectedToolStripMenuItem.Text = "Refresh Selected";
+            // 
+            // refreshAllToolStripMenuItem
+            // 
+            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
+            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.refreshAllToolStripMenuItem.Text = "Refresh All";
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
             // 
             // SearchUI
             // 
@@ -326,6 +360,7 @@ namespace BasicSearch.UI
             this.SplitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer2)).EndInit();
             this.SplitContainer2.ResumeLayout(false);
+            this.CmResults.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -347,5 +382,9 @@ namespace BasicSearch.UI
         private MetroFramework.Components.MetroToolTip MetroToolTip1;
         private AddressListBox ResultBox;
         private SearchProgressBar PbScanProgress;
+        private MetroFramework.Controls.MetroContextMenu CmResults;
+        private System.Windows.Forms.ToolStripMenuItem refreshSelectedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
     }
 }
